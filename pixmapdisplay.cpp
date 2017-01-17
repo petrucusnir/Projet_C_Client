@@ -1,7 +1,7 @@
 #include <QPainter>
 
 #include "pixmapdisplay.h"
-
+#include "sleeper.h"
 PixmapDisplay::PixmapDisplay(QWidget *parent) :
     QWidget(parent)
 {
@@ -24,5 +24,6 @@ void PixmapDisplay::paintEvent(QPaintEvent *)
 
 void PixmapDisplay::setToPix(QPixmap *pix)
 {
-    pm = pix;
+    pm->swap(*pix);
+    this->update();
 }
