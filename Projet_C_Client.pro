@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui network phonon
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -14,9 +14,14 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    clienttcp.cpp
+    clienttcp.cpp \
+    serveurtcp.cpp \
+    pixmapdisplay.cpp
 
 HEADERS  += mainwindow.h \
-    clienttcp.h
+    clienttcp.h \
+    serveurtcp.h \
+    pixmapdisplay.h \
+    sleeper.h
 
 FORMS    += mainwindow.ui

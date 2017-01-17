@@ -1,8 +1,10 @@
 #include "clienttcp.h"
+#include "sleeper.h"
 
-ClientTcp::ClientTcp()
+ClientTcp::ClientTcp(PixmapDisplay *_PixD)
 {
-    port=4002; // choix arbitraire (>1024)
+    port=4000; // choix arbitraire (>1024)
+    PixD = _PixD;
     QObject::connect(&soc,SIGNAL(connected()),this,SLOT(connexion_OK()));
     // signal émis lors de la connexion au serveur
     QObject:: connect(&soc, SIGNAL(readyRead()), this, SLOT(lecture()));
@@ -24,10 +26,9 @@ void ClientTcp::connexion_OK()
 }
 void ClientTcp::lecture()
 {
-    QString ligne;
-    while(soc.canReadLine()) // tant qu'il y a quelque chose à lire dans la socket
-    {
-        ligne = soc.readLine();     // on lit une ligne
-        emit vers_IHM_texte(ligne); // on envoie à l'IHM
-    }
+    QByteArray frame(soc.readAll());
+    QDataStream in(&frame, QIODevice::ReadOnly);
+    QPixmap pix;
+    in >> pix;
+    PixD->setToPix(&pix);
 }
