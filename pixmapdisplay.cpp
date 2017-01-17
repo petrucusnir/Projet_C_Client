@@ -24,6 +24,7 @@ void PixmapDisplay::paintEvent(QPaintEvent *)
 
 void PixmapDisplay::setToPix(QPixmap *pix)
 {
-    pm->swap(*pix);
+    QPixmap newpix(pix->scaled(800,800));
+    pm->swap(newpix);
     this->update();
 }
