@@ -6,6 +6,8 @@
 #include <QInputDialog>
 #include <QDir>
 #include "pixmapdisplay.h"
+#include "graphicview.h"
+#include "graphicscene.h"
 
 #include <phonon/audiooutput.h>
 #include <phonon/mediaobject.h>
@@ -22,9 +24,11 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
     MainWindow mwindow;
     mwindow.setGeometry(50,50,950,950);
-    PixmapDisplay PixD(&mwindow);
+    //PixmapDisplay PixD(&mwindow);
+    GraphicScene scene(&mwindow);
+    GraphicView view(&scene, &mwindow);
     mwindow.show();
-    ClientTcp c1(&PixD);
+    ClientTcp c1(&scene, &view);
     QString ip = "localhost";
     c1.recoit_IP(ip);
     bool ok;

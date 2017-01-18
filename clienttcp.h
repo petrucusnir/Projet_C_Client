@@ -4,13 +4,15 @@
 #include <QObject>
 #include <QTcpSocket>
 
-#include "pixmapdisplay.h"
+//#include "pixmapdisplay.h"
+#include "graphicscene.h"
+#include "graphicview.h"
 
 class ClientTcp : public QObject
 {
 Q_OBJECT
 public :
-    ClientTcp(PixmapDisplay *_PixD);
+    ClientTcp(GraphicScene *_Scene, GraphicView *_view);
 public slots :
     void recoit_IP(QString IP2);  // en provenance de l'IHM et se connecte au serveur
     void recoit_texte(QString t); // en provenance de l'IHM et écrit sur la socket
@@ -24,7 +26,8 @@ private :
     QString IP;
     int port;
     QTcpSocket soc;
-    PixmapDisplay *PixD;
+    GraphicScene *scene;
+    GraphicView *view;
 };
 
 #endif // CLIENTTCP
