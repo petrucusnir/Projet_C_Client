@@ -26,9 +26,18 @@ void ClientTcp::connexion_OK()
 }
 void ClientTcp::lecture()
 {
+    /*
     QByteArray frame(soc.readAll());
     QDataStream in(&frame, QIODevice::ReadOnly);
     QPixmap pix;
     in >> pix;
     PixD->setToPix(&pix);
+    */
+
+    QByteArray frame(soc.readAll());
+    QDataStream in(&frame, QIODevice::ReadOnly);
+    qreal x;
+    qreal y;
+    in >> y >> x;
+    qDebug() << x << y;
 }
