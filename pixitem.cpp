@@ -11,7 +11,7 @@ PixItem::PixItem(int _TypeCorp, qreal rotation, qreal x, qreal y, GraphicScene *
     switch(_TypeCorp)
     {
     case 1 : this->setPixmap(QPixmap("../Projet_C_Client/PIC/Vaisseau1.png")); break;
-    case 2 : this->setPixmap(QPixmap("../Projet_C_Client/PIC/missile.png")); this->scale(2, 2); break;
+    case 2 : this->setPixmap(QPixmap("../Projet_C_Client/PIC/missile.png")); break;
     case 3 : this->setPixmap(QPixmap("../Projet_C_Client/PIC/asteroide.png")); break;
     case 4 : this->setPixmap(QPixmap("../Projet_C_Client/PIC/particle2.png")); break;
     case 5 : this->setPixmap(QPixmap("../Projet_C/PIC/wall2.png")); break;
@@ -25,7 +25,7 @@ PixItem::PixItem(int _TypeCorp, qreal rotation, qreal x, qreal y, GraphicScene *
     t.rotate(rotation);
     t.translate(-boundingRect().width()/2, -boundingRect().height()/2);
     setTransform(t);
-    setPos(x, y);
+    //setPos(x, y);
     readyToAnimate = true;
     timer = new QTimer(this);
     connect(timer,SIGNAL(timeout()),this, SLOT(AnimAux()));

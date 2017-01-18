@@ -63,6 +63,6 @@ void ClientTcp::lecture()
         PixToAdd->setGraphicsEffect(colorEffect);
         PixToAdd->scale(scaleX, scaleY);
         scene->addItem(PixToAdd);
-        qDebug() << x << y << rotation << TypeCorp << red << green << blue << strength << scaleX << scaleY;
+        PixToAdd->setPos(x - PixToAdd->boundingRect().width()/2, y - PixToAdd->boundingRect().height()/2);
     }
 }
