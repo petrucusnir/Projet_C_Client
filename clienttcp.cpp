@@ -63,6 +63,11 @@ void ClientTcp::lecture()
         PixToAdd->setGraphicsEffect(colorEffect);
         PixToAdd->scale(scaleX, scaleY);
         scene->addItem(PixToAdd);
-        PixToAdd->setPos(x - PixToAdd->boundingRect().width()/2, y - PixToAdd->boundingRect().height()/2);
+        if(TypeCorp == 1)
+        {
+            PixToAdd->setPos(x - PixToAdd->boundingRect().width()/2, y - PixToAdd->boundingRect().height()/2);
+        }else{
+            PixToAdd->setPos(x, y);
+        }
     }
 }
